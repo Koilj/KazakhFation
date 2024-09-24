@@ -1,0 +1,127 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f5ef;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #333;
+    padding: 1rem;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 1rem;
+}
+
+/* Hero Section */
+.hero {
+    background-image: url('../Images/hero-banner.jpg'); /* Placeholder image */
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+}
+
+/* Main content */
+.main-content {
+    display: flex;
+    flex-direction: column; /* Изменено для центрирования */
+    align-items: center; /* Центрирование содержимого */
+    padding: 2rem;
+}
+
+.product-grid {
+    display: flex;
+    flex-wrap: wrap; /* Чтобы блоки переходили на новую строку при уменьшении экрана */
+    gap: 20px; /* Пробелы между блоками */
+    justify-content: center; /* Центрирование продуктов */
+}
+
+.product {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-color: transparent;
+    text-align: center; /* Выравнивание текста по центру */
+}
+
+.product h3 {
+    margin-bottom: 10px; /* Отступ под текстом */
+    font-size: 18px; /* Размер шрифта для заголовка */
+    color: #333; /* Цвет текста */
+}
+
+.product img {
+    display: block;
+    width: 200px; /* Фиксированная ширина для всех изображений */
+    height: 300px; /* Фиксированная высота для всех изображений */
+    object-fit: cover; /* Обрезает изображение, чтобы оно заполнило весь блок */
+    border-radius: 10px; /* Скругленные углы */
+}
+
+.product p {
+    margin-top: 5px; /* Отступ сверху цены */
+    font-size: 16px; /* Размер шрифта для цены */
+    color:black; /* Цвет текста цены */
+    text-align: end;
+}
+
+/* Blog section */
+.blog-section {
+    padding: 2rem;
+    background-color: #f3f1e8;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
+}
+
+.blog-post {
+    background-color: #fff;
+    padding: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.blog-post h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.blog-post p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 2rem;
+    text-align: center;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 1rem;
+}
