@@ -61,6 +61,11 @@ body {
     border: none;
     background-color: transparent;
     text-align: center; /* Выравнивание текста по центру */
+    transition: transform 0.3s ease;
+}
+
+.product:hover {
+    transform: translateY(-5px);
 }
 
 .product h3 {
@@ -142,7 +147,7 @@ body {
 }
 
 .info-section h2 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     color: #6c5434;
     margin-bottom: 1rem;
     text-transform: uppercase;
@@ -153,6 +158,76 @@ body {
     font-size: 1.2rem;
     color: #4e4e4e;
     line-height: 1.8;
+}
+
+/* Cultural block */
+/* Стиль для всего блока */
+.cultural-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f3f1eb;
+    border-radius: 15px;
+    padding: 2rem;
+    margin-top: 2.5rem;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.cultural-block:hover {
+    transform: scale(1.02);
+}
+
+/* Стиль для текста */
+.cultural-text {
+    max-width: 55%;
+}
+
+.cultural-text h2 {
+    font-size: 2.5rem;
+    color: #64412f;
+    margin-bottom: 1.5rem;
+}
+
+.cultural-text p {
+    font-size: 1.2rem;
+    color: #4d4d4d;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+/* Стиль для ссылки-кнопки */
+.cultural-link {
+    font-size: 1.2rem;
+    color: #ffffff;
+    background-color: #64412f;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+    position: relative;
+}
+
+.cultural-link .arrow {
+    margin-left: 0.5rem;
+    transition: margin-left 0.3s ease;
+}
+
+.cultural-link:hover {
+    background-color: #8b6649;
+}
+
+.cultural-link:hover .arrow {
+    margin-left: 1rem;
+}
+
+/* Стиль для изображения */
+.cultural-image img {
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 
