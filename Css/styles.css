@@ -1,11 +1,12 @@
 /* styles.css */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f7f5ef;
     color: #333;
 }
+
 
 /* Navbar */
 .navbar {
@@ -16,6 +17,8 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+
+
 
 .navbar a {
     color: #fff;

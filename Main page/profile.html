@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QazaqFashion Profile</title>
+  <!-- Подключаем CSS файл -->
+  <link rel="stylesheet" href="/Css/profile.css">
+  <!-- Подключаем Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@300;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Header Section -->
+<header class="profile-header">
+  <nav class="navbar">
+    <a href="/" class="logo">Qazaq<span>Fashion</span></a>
+    <ul class="nav-links">
+      <li><a href="#profile">Profile</a></li>
+      <li><a href="#settings">Settings</a></li>
+      <li><a href="#cart">Cart</a></li>
+      <li><a href="#logout">Log Out</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Profile Overview Section -->
+<section id="profile" class="profile-overview">
+  <div class="profile-info">
+    <div class="avatar-container">
+      <img src="user-avatar.jpg" alt="User Avatar" class="avatar">
+    </div>
+    <div class="info">
+      <h2>Hello, <span class="username">[User Name]</span></h2>
+      <p>Email: <span class="user-email">[User Email]</span></p>
+      <button class="edit-profile-btn">Edit Profile</button>
+    </div>
+  </div>
+</section>
+
+<!-- Settings Section -->
+<section id="settings" class="settings-section">
+  <h3>Account Settings</h3>
+  <form class="settings-form">
+    <label for="name">Name</label>
+    <input type="text" id="name" value="[User Name]">
+
+    <label for="email">Email</label>
+    <input type="email" id="email" value="[User Email]">
+
+    <label for="password">Password</label>
+    <input type="password" id="password" placeholder="••••••••">
+
+    <label for="address">Address</label>
+    <input type="text" id="address" value="[User Address]">
+
+    <label for="payment-method">Payment Method</label>
+    <select id="payment-method">
+      <option value="card">Credit Card</option>
+      <option value="paypal">PayPal</option>
+    </select>
+
+    <button type="submit" class="save-btn">Save Changes</button>
+  </form>
+</section>
+
+<!-- Shopping Cart Section -->
+<section id="cart" class="shopping-cart">
+  <h3>Your Shopping Cart</h3>
+  <div class="cart-items">
+    <div class="cart-item">
+      <img src="item.jpg" alt="Item Image">
+      <div class="item-details">
+        <p>Item Name</p>
+        <p>Price: $XX.XX</p>
+        <p>Quantity: 1</p>
+      </div>
+      <button class="remove-btn">Remove</button>
+    </div>
+  </div>
+  <h4>Total: $XX.XX</h4>
+  <button class="checkout-btn">Checkout</button>
+</section>
+
+<!-- Footer Section -->
+<footer class="footer">
+  <p>&copy; 2024 QazaqFashion. All rights reserved.</p>
+  <ul class="footer-links">
+    <li><a href="#">Help</a></li>
+    <li><a href="#">Privacy Policy</a></li>
+    <li><a href="#">Terms of Service</a></li>
+  </ul>
+</footer>
+
+</body>
+</html>
