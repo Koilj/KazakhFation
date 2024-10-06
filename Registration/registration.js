@@ -1,72 +1,84 @@
 const nextButtons = document.querySelectorAll('.next-btn');
 const formSteps = document.querySelectorAll('.form-step');
-const togglePasswordButtons = document.querySelectorAll('.toggle-password');
 const errorMessage = document.getElementById('error-message');
 const emailInput = document.getElementById('email');
 
 let currentStep = 0;
 
-// Show the initial step
+// Показать начальный шаг
 showStep(currentStep);
 
 function showStep(stepIndex) {
     formSteps.forEach((step, index) => {
         step.classList.toggle('active', index === stepIndex);
-        step.classList.toggle('hidden', index !== stepIndex); // Toggle hidden class
+        step.classList.toggle('hidden', index !== stepIndex);
     });
-    // Reset the error message when moving to a new step
-    errorMessage.classList.add('hidden');
+    errorMessage.classList.add('hidden'); // Скрыть сообщение об ошибке
 }
 
 nextButtons.forEach((button) => {
     button.addEventListener('click', () => {
-        // Validate email for step 1
+        // Проверка электронной почты на первом шаге
         if (currentStep === 0) {
             const email = emailInput.value;
-            if (!email.includes('@')) {
-                alert('Please enter a valid email address containing "@"');
-                return; // Prevent proceeding to the next step
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailPattern.test(email)) {
+                showError('Адрес электронной почты должен содержать символ "@" и домен.');
+                return;
             }
         }
 
-        if (currentStep < formSteps.length - 1) {
-            currentStep++;
+        currentStep++;
+        if (currentStep < formSteps.length) {
             showStep(currentStep);
         }
     });
 });
 
-// Password visibility toggle
-togglePasswordButtons.forEach((button) => {
-    button.addEventListener('click', (e) => {
-        const passwordInput = e.target.previousElementSibling;
-        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-        passwordInput.setAttribute('type', type);
-        button.textContent = type === 'password' ? 'Show' : 'Hide'; // Toggle button text
-    });
-});
-
-document.getElementById('registration-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent default form submission
+// Обработка отправки формы
+document.getElementById('registration-form').addEventListener('submit', async function(event) {
+    event.preventDefault();
 
     const email = emailInput.value;
     const verificationCode = document.getElementById('verification-code').value;
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirm-password').value;
 
-    // You can add your registration logic here, like sending data to a server
-    console.log('Email:', email);
-    console.log('Verification Code:', verificationCode);
-    console.log('Password:', password);
+    // Сбросить сообщение об ошибке
+    errorMessage.classList.add('hidden');
 
-    // Add password confirmation logic
     if (password !== confirmPassword) {
-        errorMessage.classList.remove('hidden'); // Show error message
+        showError('Пароли не совпадают. Пожалуйста, попробуйте еще раз.');
         return;
     }
 
+    // Подготовка данных для отправки на сервер
+    const registrationData = {
+        email,
+        verificationCode,
+        password
+    };
 
-    alert('Registration successful!'); // Feedback for the user
+    // Отправка данных на сервер
+    const response = await fetch('/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(registrationData),
+    });
+
+    if (response.ok) {
+        alert('Регистрация успешна! Пожалуйста, проверьте свою почту для активации аккаунта.');
+        window.location.href = 'login.html';
+    } else {
+        showError('Регистрация не удалась. Пожалуйста, попробуйте еще раз.');
+    }
 });
 
-
+// Функция для отображения сообщений об ошибках
+function showError(message) {
+    errorMessage.textContent = message;
+    errorMessage.classList.remove('hidden');
+}

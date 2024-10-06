@@ -7,7 +7,6 @@ body {
     color: #333;
 }
 
-
 /* Navbar */
 .navbar {
     background-color: #333;
@@ -18,8 +17,6 @@ body {
     align-items: center;
 }
 
-
-
 .navbar a {
     color: #fff;
     text-decoration: none;
@@ -27,18 +24,6 @@ body {
 }
 
 /* Hero Section */
-.hero {
-    background-image: url('../Images/hero-banner.jpg'); /* Placeholder image */
-    background-size: cover;
-    background-position: center;
-    height: 500px;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
 .hero h1 {
     font-size: 3rem;
 }
@@ -46,57 +31,88 @@ body {
 /* Main content */
 .main-content {
     display: flex;
-    flex-direction: column; /* Изменено для центрирования */
-    align-items: center; /* Центрирование содержимого */
+    flex-direction: column;
+    align-items: center;
     padding: 2rem;
 }
 
-.product-grid {
-    display: flex;
-    flex-wrap: wrap; /* Чтобы блоки переходили на новую строку при уменьшении экрана */
-    gap: 20px; /* Пробелы между блоками */
-    justify-content: center; /* Центрирование продуктов */
+/* Products Section */
+.products-showcase {
+    padding: 4rem 2rem;
+    background-color: #f7f5ef;
+    text-align: center;
 }
 
-.product {
-    padding: 0;
-    margin: 0;
-    border: none;
-    background-color: transparent;
-    text-align: center; /* Выравнивание текста по центру */
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #333;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Используйте адаптивную сетку */
+    gap: 2rem; /* Пробелы между карточками */
+    justify-items: center;
+    padding: 20px; /* Пространство вокруг сетки */
+}
+
+.product-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    overflow: hidden;
+    width: 100%; /* Полная ширина карточки */
+    max-width: 100%; /* Убираем максимальную ширину */
 }
 
-.product:hover {
-    transform: translateY(-5px);
+.product-card:hover {
+    transform: translateY(-10px);
 }
 
-.product h3 {
-    margin-bottom: 10px; /* Отступ под текстом */
-    font-size: 18px; /* Размер шрифта для заголовка */
-    color: #333; /* Цвет текста */
+.product-image img {
+    width: 100%;
+    height: 350px; /* Увеличенная высота изображения */
+    object-fit: cover;
+    border-bottom: 4px solid #333;
 }
 
-.product img {
-    display: block;
-    width: 200px; /* Фиксированная ширина для всех изображений */
-    height: 300px; /* Фиксированная высота для всех изображений */
-    object-fit: cover; /* Обрезает изображение, чтобы оно заполнило весь блок */
-    border-radius: 10px; /* Скругленные углы */
-    transition: transform 0.3s ease;
-
+.product-info {
+    padding: 2rem; /* Увеличенные отступы внутри карточки */
 }
 
-.product img:hover {
-    transform: translateY(-5px);
+.product-info h3 {
+    font-size: 1.8rem; /* Размер шрифта для заголовка */
+    color: #333;
+    margin: 0.5rem 0 0.8rem 0; /* Уменьшены отступы сверху, увеличены снизу */
 }
 
-.product p {
-    margin-top: 5px; /* Отступ сверху цены */
-    font-size: 16px; /* Размер шрифта для цены */
-    color:black; /* Цвет текста цены */
-    text-align: end;
+.product-info p {
+    font-size: 1.4rem; /* Размер шрифта для описания */
+    color: #777;
+    margin-bottom: 1.9rem;
 }
+
+.product-btn {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem 2.5rem; /* Увеличенные отступы */
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.product-btn:hover {
+    background-color: #64412f;
+}
+
+
+
+
+/* About Us */
 .about-us {
     background-color: #f7f5ef;
     padding: 40px;
@@ -104,67 +120,27 @@ body {
     text-align: center;
     border-radius: 10px;
     font-family: Arial, sans-serif;
-
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Добавление теней */
 }
 
 .about-us h2 {
-    font-size: 2em;
+    font-size: 2.5em; /* Увеличен размер заголовка */
     margin-bottom: 20px;
     color: #333;
 }
 
 .about-us p {
     font-size: 1.4em;
-    line-height: 1.6;
+    line-height: 1.8; /* Увеличено межстрочное расстояние */
     max-width: 850px;
     margin: 0 auto;
-    color:#6c5434;
+    color: #444; /* Сделан более темным для лучшей видимости */
 }
 
-/* Info section  */
-.more-info {
-    padding: 3rem;
-    background: linear-gradient(to right, #f3f1e8, #f7f5ef);
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
 
-.info-section {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 3rem;
-    padding: 1.5rem;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease;
-}
 
-.info-section:hover {
-    transform: translateY(-5px);
-}
 
-.info-icon {
-    flex-shrink: 0;
-    margin-right: 1.5rem;
-}
-
-.info-section h2 {
-    font-size: 1.6rem;
-    color: #6c5434;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-}
-
-.info-section p {
-    font-size: 1.2rem;
-    color: #4e4e4e;
-    line-height: 1.8;
-}
-
-/* Cultural block */
-/* Стиль для всего блока */
+/* Cultural Block */
 .cultural-block {
     display: flex;
     justify-content: space-between;
@@ -181,25 +157,24 @@ body {
     transform: scale(1.02);
 }
 
-/* Стиль для текста */
 .cultural-text {
     max-width: 55%;
 }
 
 .cultural-text h2 {
-    font-size: 2.5rem;
+    font-size: 2.8rem; /* Увеличен размер заголовка */
     color: #64412f;
     margin-bottom: 1.5rem;
 }
 
 .cultural-text p {
-    font-size: 1.2rem;
-    color: #4d4d4d;
-    line-height: 1.8;
+    font-size: 1.4rem; /* Увеличен размер текста */
+    line-height: 1.8; /* Увеличено межстрочное расстояние для лучшего чтения */
+    color: #333; /* Более темный текст */
     margin-bottom: 2rem;
+    text-align: justify; /* Выровнен по ширине для более аккуратного вида */
 }
 
-/* Стиль для ссылки-кнопки */
 .cultural-link {
     font-size: 1.2rem;
     color: #ffffff;
@@ -213,28 +188,26 @@ body {
     position: relative;
 }
 
+.cultural-link:hover {
+    background-color: #8b6649;
+}
+
 .cultural-link .arrow {
     margin-left: 0.5rem;
     transition: margin-left 0.3s ease;
-}
-
-.cultural-link:hover {
-    background-color: #8b6649;
 }
 
 .cultural-link:hover .arrow {
     margin-left: 1rem;
 }
 
-/* Стиль для изображения */
 .cultural-image img {
     max-width: 400px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-
-/* Blog section */
+/* Blog Section */
 .blog-section {
     padding: 2rem;
     background-color: #f3f1e8;
@@ -245,7 +218,6 @@ body {
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 2rem;
 }
-
 
 .blog-post {
     background-color: #fff;
@@ -280,4 +252,44 @@ body {
     color: #fff;
     text-decoration: none;
     margin: 0 1rem;
+}
+
+/* Video Background */
+.video-container {
+    position: relative;
+    height: 82vh;
+    overflow: hidden;
+}
+
+.video-container video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.video-overlay h1 {
+    font-size: 4rem;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    z-index: 1;
 }
