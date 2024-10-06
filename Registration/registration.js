@@ -68,3 +68,5 @@ document.getElementById('registration-form').addEventListener('submit', function
 
     alert('Registration successful!'); // Feedback for the user
 });
+
+

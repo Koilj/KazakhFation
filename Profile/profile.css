@@ -1,0 +1,223 @@
+/* Базовые стили */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f7f5ef;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Стили для шапки */
+header {
+    background-color: #333;
+    color: #f7f5ef;
+    padding: 11px;
+    margin: 0;
+    position: sticky;
+    top: 0;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #f7f5ef;
+    text-decoration: none;
+    margin: 0;
+}
+
+.navbar {
+    background-color: #333;
+    padding: 1rem;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: #f7f5ef;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ff9770;
+}
+
+/* Стили для профиля */
+.profile-overview {
+    margin: 40px auto;
+    padding: 30px;
+    max-width: 1200px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.avatar-container {
+    position: relative; /* Убедитесь, что родительский контейнер имеет относительное позиционирование */
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.camera-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    padding: 8px; /* Увеличьте отступ для большей области клика */
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+    width: 20px; /* Увеличьте ширину и высоту */
+    height: 20px;
+    display: flex; /* Используйте флекс для центрирования содержимого */
+    justify-content: center;
+    align-items: center;
+}
+
+.camera-icon:hover {
+    transform: scale(1.1);
+}
+
+.camera-icon span {
+    font-size: 24px; /* Увеличьте размер шрифта для лучшего отображения */
+}
+
+.info {
+    flex: 1;
+}
+
+.username {
+    color: #ff9770;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.edit-profile-btn {
+    background-color: #444;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    font-size: 18px;
+}
+
+.edit-profile-btn:hover {
+    background-color: #ff9770;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Стили для формы настроек */
+.settings-section,
+.seller-section {
+    margin: 40px auto;
+    padding: 30px;
+    max-width: 800px;
+    background: #f7f5ef;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.settings-form label,
+.seller-form label {
+    font-weight: 600;
+    color: #333;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.settings-form input,
+.settings-form select,
+.settings-form textarea,
+.seller-form input,
+.seller-form select,
+.seller-form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ff9770;
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.save-btn,
+.submit-btn {
+    width: 100%;
+    background-color: #ff6200; /* Новый цвет для кнопки */
+    border: none;
+    padding: 15px;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.save-btn:hover,
+.submit-btn:hover {
+    background-color: #ff8a00; /* Новый цвет при наведении */
+}
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 2rem;
+    text-align: center;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 1rem;
+}
+
+
+.become-seller-btn {
+    background-color: #444;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.become-seller-btn:hover {
+    background-color: #ff9770;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
