@@ -1,0 +1,180 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f5ef;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #333;
+    padding: 1rem;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 1rem;
+}
+
+/* Categories Section */
+.categories {
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.categories h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+.category-grid {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+
+}
+
+.category-card {
+    position: relative;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    flex: 1;
+    max-width: 360px;
+    height: 500px;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Добавлено для анимации */
+}
+
+.category-card:hover {
+    transform: translateY(-10px); /* Добавлено для эффекта при наведении */
+}
+
+.category-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.category-card h3 {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+/* New Arrivals Carousel */
+.new-arrivals-title {
+    font-size: 2.5rem; /* Размер шрифта */
+    margin: 2rem 0; /* Отступ сверху и снизу */
+    color: #333; /* Цвет текста */
+    text-align: center; /* Центрирование текста */
+}
+
+
+.carousel-container {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+/* Carousel */
+.carousel {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+}
+
+/* Carousel Item */
+.carousel-item {
+    min-width: 200px;
+    background-color: white;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+}
+
+.carousel-item[style*="block"] {
+    display: block;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.carousel-item p {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+    border-radius: 50%;
+}
+
+.left-btn {
+    left: 10px;
+}
+
+.right-btn {
+    right: 10px;
+}
+
+.carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+/* Products Section */
+
+.products {
+    padding: 2rem;
+    text-align: center;
+}
+
+.product-category {
+    margin-top: 2rem;
+}
+
+/* Footer */
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 2rem;
+    text-align: center;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 1rem;
+}
+
+

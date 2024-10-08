@@ -69,27 +69,34 @@
 <section id="seller" class="seller-section" style="display: none;">
   <h3>Become a Seller</h3>
   <form class="seller-form" onsubmit="saveSellerDetails(event)">
-    <label for="product-name">Product Name</label>
-    <input type="text" id="product-name" required>
+    <label for="full-name">Full Name</label>
+    <input type="text" id="full-name" required>
 
-    <label for="product-description">Product Description</label>
-    <textarea id="product-description" required></textarea>
+    <label for="dob">Date of Birth</label>
+    <input type="date" id="dob" required>
 
-    <label for="price">Price of Product</label>
-    <input type="url" id="price">
+    <label for="id-number">Identification Number</label>
+    <input type="text" id="id-number" required>
 
-    <label for="photos">Photos of Product</label>
-    <input type="file" id="photos" accept="image/*" required>
+    <label for="id-photo">Upload ID Photo</label>
+    <input type="file" id="id-photo" accept="image/*" required>
+
+    <label for="bank-details">Bank Account Details</label>
+    <input type="text" id="bank-details" required>
 
     <label for="phone-number">Phone Number</label>
     <input type="tel" id="phone-number" required>
 
-    <button type="submit" class="submit-btn">Submit</button>
+    <!-- Контейнер для согласия и кнопки отправки -->
+    <div class="form-footer">
+      <label for="agreement" class="agreement-label">
+        <input type="checkbox" id="agreement" required>
+        I agree to the terms and conditions
+      </label>
+      <button type="submit" class="submit-btn">Submit</button>
+    </div>
   </form>
 </section>
-
-
-
 
 <!-- Footer Section -->
 <div class="footer">

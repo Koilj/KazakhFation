@@ -23,19 +23,35 @@ function saveSettings(event) {
 }
 
 function saveSellerDetails(event) {
-    event.preventDefault();
-    const productName = document.getElementById('product-name').value;
-    const productDescription = document.getElementById('product-description').value;
-    const price = document.getElementById('price').value;
-    const phoneNumber = document.getElementById('photos').value;
+    event.preventDefault(); // Prevent form submission
 
-    localStorage.setItem('productName', productName);
-    localStorage.setItem('productDescription', productDescription);
-    localStorage.setItem('price', price);
-    localStorage.setItem('phoneNumber', phoneNumber);
+    // Get values from fields
+    const fullName = document.getElementById('full-name').value;
+    const idNumber = document.getElementById('id-number').value; // Изменено здесь
+    const passport = document.getElementById('id-photo').files[0]; // Изменено здесь
+    const bankDetails = document.getElementById('bank-details').value;
+    const phoneNumber = document.getElementById('phone-number').value;
 
-    document.querySelector('.settings-form').reset();
-    alert("Данные успешно сохранены!");
+    // Save data to localStorage
+    localStorage.setItem('sellerFullName', fullName);
+    localStorage.setItem('sellerIDNumber', idNumber); // Изменено здесь
+    localStorage.setItem('sellerBankDetails', bankDetails);
+    localStorage.setItem('sellerPhoneNumber', phoneNumber);
+
+    // For file (passport), save as base64 string
+    if (passport) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            localStorage.setItem('sellerPassport', e.target.result);
+            alert("Данные успешно сохранены!");
+        };
+        reader.readAsDataURL(passport);
+    } else {
+        alert("Данные успешно сохранены!");
+    }
+
+    // Clear form fields
+    document.querySelector('.seller-form').reset();
 }
 
 function changeAvatar(event) {
@@ -66,10 +82,13 @@ window.onload = () => {
     const savedUserName = localStorage.getItem('userName');
     const savedUserEmail = localStorage.getItem('userEmail');
     const savedUserAvatar = localStorage.getItem('userAvatar');
-    const savedProductName = localStorage.getItem('productName');
-    const savedProductDescription = localStorage.getItem('productDescription');
-    const savedPrice = localStorage.getItem('price');
-    const savedPhoneNumber = localStorage.getItem('phoneNumber');
+    const savedSellerFullName = localStorage.getItem('sellerFullName');
+    const savedSellerUIN = localStorage.getItem('sellerUIN');
+    const savedSellerTaxNumber = localStorage.getItem('sellerTaxNumber');
+    const savedSellerAddress = localStorage.getItem('sellerAddress');
+    const savedSellerBankDetails = localStorage.getItem('sellerBankDetails');
+    const savedSellerPhoneNumber = localStorage.getItem('sellerPhoneNumber');
+    const savedSellerPassport = localStorage.getItem('sellerPassport');
 
     if (savedUserName) {
         document.getElementById('name').value = savedUserName;
@@ -80,10 +99,19 @@ window.onload = () => {
         document.getElementById('userEmail').innerText = savedUserEmail;
     }
     if (savedUserAvatar) document.getElementById('userAvatar').src = savedUserAvatar;
-    if (savedProductName) document.getElementById('shop-name').value = savedProductName;
-    if (savedProductDescription) document.getElementById('shop-description').value = savedProductDescription;
-    if (savedPrice) document.getElementById('shop-website').value = savedPrice;
-    if (savedPhoneNumber) document.getElementById('phone-number').value = savedPhoneNumber;
+
+    // Populate seller fields
+    if (savedSellerFullName) document.getElementById('full-name').value = savedSellerFullName;
+    if (savedSellerUIN) document.getElementById('uin').value = savedSellerUIN;
+    if (savedSellerTaxNumber) document.getElementById('tax-number').value = savedSellerTaxNumber;
+    if (savedSellerAddress) document.getElementById('address').value = savedSellerAddress;
+    if (savedSellerBankDetails) document.getElementById('bank-details').value = savedSellerBankDetails;
+    if (savedSellerPhoneNumber) document.getElementById('phone-number').value = savedSellerPhoneNumber;
+
+    // Optional: If you want to show the uploaded passport file link
+    if (savedSellerPassport) {
+        console.log("Загруженный паспорт:", savedSellerPassport); // For debug purposes
+    }
 };
 
 function toggleSettings() {

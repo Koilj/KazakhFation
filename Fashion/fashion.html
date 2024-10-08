@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QazaqFashion - Shop by Category</title>
+  <link rel="stylesheet" href="fashion.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@300;700&display=swap" rel="stylesheet">
+  <script src="fashion.js" defer></script>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+  <div>
+    <h1>QazaqFashion</h1>
+  </div>
+  <div>
+    <a href="../Registration/registration.html" class="registration-btn">Login</a>
+  </div>
+</div>
+
+<!-- Category Section -->
+<div class="categories">
+  <h2>Shop by Category</h2>
+  <div class="category-grid">
+    <div class="category-card" onclick="showProducts('men')">
+      <h3>Men</h3>
+      <img src="Men%20clothes.jpeg" alt="Men's Clothing" class="category-image">
+    </div>
+    <div class="category-card" onclick="showProducts('women')">
+      <h3>Women</h3>
+      <img src="women%20clothes.jpeg" alt="Women's Clothing" class="category-image">
+    </div>
+    <div class="category-card" onclick="showProducts('kids')">
+      <h3>Kids</h3>
+      <img src="kids%20clothes.jpeg" alt="Kids' Clothing" class="category-image">
+    </div>
+  </div>
+</div>
+
+<!-- New Arrivals Section -->
+<div class="new-arrivals">
+  <h2 class="new-arrivals-title">New Arrivals</h2>
+  <div class="carousel-container">
+    <button class="carousel-btn left-btn">&#8249;</button>
+    <div class="carousel">
+      <div class="carousel-item" data-category="men">
+        <img src="shapan.jpg" alt="New Arrival 1">
+        <p>Shapan</p>
+      </div>
+      <div class="carousel-item" data-category="men">
+        <img src="men%20clothes.jpg" alt="New Arrival 2">
+        <p>Vest</p>
+      </div>
+      <div class="carousel-item" data-category="men">
+        <img src="head.png" alt="New Arrival 2">
+          <p>Headdress</p>
+      </div>
+      <div class="carousel-item" data-category="men">
+        <img src="blue%20shapan.jpg" alt="New Arrival 2">
+        <p>Shapan</p>
+      </div>
+      <div class="carousel-item" data-category="men">
+        <img src="pidzhak.png" alt="New Arrival 2">
+        <p>Blazer</p>
+      </div>
+      <div class="carousel-item" data-category="men">
+        <img src="green%20shapan.png" alt="New Arrival 2">
+        <p>Shapan</p>
+      </div>
+      <div class="carousel-item" data-category="men">
+        <img src="blue%20shapan.jpg" alt="New Arrival 2">
+        <p>Shapan</p>
+      </div>
+      <div class="carousel-item" data-category="men">
+        <img src="red%20shapan.jpg" alt="New Arrival 2">
+        <p>Shapan</p>
+      </div>
+      <div class="carousel-item" data-category="men">
+        <img src="black%20shapan.jpg" alt="New Arrival 2">
+        <p>Shapan</p>
+      </div>
+
+      <div class="carousel-item" data-category="women">
+        <img src="kyrgyzskaia-natsionalnaia-odezhda-beldemchi-14.png" alt="New Arrival 3">
+        <p>Vest</p>
+      </div>
+      <div class="carousel-item" data-category="women">
+        <img src="shortsy-altaitsy-teleuty-6.png" alt="New Arrival 4">
+        <p>Shapan</p>
+      </div>
+      <div class="carousel-item" data-category="women">
+        <img src="women%20shapan.png" alt="New Arrival 4">
+        <p>Shapan</p>
+      </div>
+      <div class="carousel-item" data-category="kids">
+        <img src="images/new5.jpg" alt="New Arrival 5">
+        <p>Kazakh Kids' Shirt</p>
+      </div>
+      <div class="carousel-item" data-category="kids">
+        <img src="images/new6.jpg" alt="New Arrival 6">
+        <p>Kazakh Kids' Pants</p>
+      </div>
+    </div>
+    <button class="carousel-btn right-btn">&#8250;</button>
+  </div>
+</div>
+
+
+
+<!-- Products Section -->
+<div id="products" class="products">
+  <h2>Products</h2>
+  <div id="men" class="product-category" style="display: none;">
+    <h3>Men's Clothing</h3>
+    <p>Product 1: Kazakh Men's Jacket</p>
+    <p>Product 2: Kazakh Men's Pants</p>
+  </div>
+  <div id="women" class="product-category" style="display: none;">
+    <h3>Women's Clothing</h3>
+    <p>Product 1: Kazakh Women's Dress</p>
+    <p>Product 2: Kazakh Women's Skirt</p>
+  </div>
+  <div id="kids" class="product-category" style="display: none;">
+    <h3>Kids' Clothing</h3>
+    <p>Product 1: Kazakh Kids' Shirt</p>
+    <p>Product 2: Kazakh Kids' Pants</p>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>&copy; 2024 QazaqFashion</p>
+  <a href="#">Privacy Policy</a>
+  <a href="#">Terms of Service</a>
+  <a href="#">Contact</a>
+</div>
+
+</body>
+</html>
