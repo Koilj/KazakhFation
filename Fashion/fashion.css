@@ -26,6 +26,7 @@ body {
 .categories {
     padding: 4rem 2rem;
     text-align: center;
+    position: relative;
 }
 
 .categories h2 {
@@ -37,8 +38,7 @@ body {
 .category-grid {
     display: flex;
     justify-content: center;
-    gap: 2rem;
-
+    gap: 1rem; /* Уменьшите значение gap для ближнего расстояния */
 }
 
 .category-card {
@@ -50,120 +50,146 @@ body {
     max-width: 360px;
     height: 500px;
     cursor: pointer;
-    transition: transform 0.3s ease; /* Добавлено для анимации */
-}
-
-.category-card:hover {
-    transform: translateY(-10px); /* Добавлено для эффекта при наведении */
+    transition: transform 0.3s ease;
+    text-align: center;
+    margin: 0; /* Убедитесь, что нет внешних отступов */
 }
 
 .category-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease, filter 0.3s ease; /* Добавляем плавный переход для transform */
 }
 
-.category-card h3 {
+.category-card:hover .category-image {
+    filter: blur(4px); /* Увеличиваем размытие для более красивого эффекта */
+    transform: scale(1.05); /* Добавляем эффект масштабирования при наведении */
+}
+
+/* Черное наложение на изображение */
+.category-card:hover::before {
+    content: '';
     position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 10px;
+    top: 0;
+    left: 0;
     width: 100%;
-    text-align: center;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Черный цвет с прозрачностью */
+    transition: opacity 0.3s ease;
 }
 
-/* New Arrivals Carousel */
-.new-arrivals-title {
-    font-size: 2.5rem; /* Размер шрифта */
-    margin: 2rem 0; /* Отступ сверху и снизу */
-    color: #333; /* Цвет текста */
-    text-align: center; /* Центрирование текста */
-}
-
-
-.carousel-container {
-    position: relative;
-    max-width: 100%;
-    overflow: hidden;
-    margin: 0 auto;
-}
-
-/* Carousel */
-.carousel {
-    display: flex;
-    gap: 20px;
-    transition: transform 0.5s ease-in-out;
-    will-change: transform;
-}
-
-/* Carousel Item */
-.carousel-item {
-    min-width: 200px;
-    background-color: white;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-}
-
-.carousel-item[style*="block"] {
-    display: block;
-}
-
-.carousel-item img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.carousel-item p {
-    margin-top: 10px;
-    font-weight: bold;
-}
-
-.carousel-btn {
+.subcategory-options {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.6);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    opacity: 0; /* Начальная непрозрачность для анимации */
+    transition: opacity 0.3s ease; /* Плавный переход для прозрачности */
+}
+
+.category-card:hover .subcategory-options {
+    display: flex;
+    opacity: 1; /* Делаем элементы видимыми при наведении */
+}
+
+.subcategory {
+    background-color: #333;
     color: white;
-    border: none;
-    padding: 10px;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
     cursor: pointer;
-    z-index: 1;
-    border-radius: 50%;
+    transition: background-color 0.3s ease;
 }
 
-.left-btn {
-    left: 10px;
+.subcategory:hover {
+    background-color: #555;
 }
 
-.right-btn {
-    right: 10px;
+/* Scroll up animation for categories */
+@keyframes scrollUp {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        transform: translateY(-250px) scale(0.5); /* Уменьшено значение translateY */
+    }
 }
 
-.carousel-btn:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+.categories-up {
+    margin-top: 150px;
+    transition: margin-top 0.6s ease; /* Ускорили переход */
+}
+
+.category-up {
+    animation: scrollUp 0.4s forwards; /* Ускорили анимацию */
+    transition: transform 0.4s ease; /* Ускорили переход */
+}
+
+@keyframes scrollDown {
+    0% {
+        transform: translateY(-200px) scale(0.5); /* Уменьшено значение translateY */
+    }
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+.category-down {
+    animation: scrollDown 0.4s forwards; /* Ускорили анимацию */
 }
 
 
-/* Products Section */
 
-.products {
+.product-display {
     padding: 2rem;
     text-align: center;
 }
 
-.product-category {
-    margin-top: 2rem;
+.product-item {
+    display: inline-block;
+    margin: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Увеличили ширину */
+    text-align: center; /* Выравнивание по центру */
+    position: relative; /* Для абсолютного позиционирования дочерних элементов */
+    opacity: 0; /* Сделайте товар невидимым по умолчанию */
+    transition: opacity 0.5s ease-in-out; /* Добавьте переход для плавного появления */
+}
+
+.product-item.show {
+    opacity: 1; /* Сделайте товар видимым, когда он появится */
+}
+
+.product-item img {
+    width: 100%; /* Пусть изображение занимает всю ширину контейнера */
+    height: auto; /* Автоматически подгоняйте высоту изображения */
+    object-fit: cover; /* Сохраните пропорции изображения и заполните контейнер */
+    transition: transform 0.3s ease; /* Добавьте плавный переход для transform */
+}
+
+.product-item:hover img {
+    transform: scale(1.05); /* Эффект масштабирования при наведении */
+}
+
+
+
+.product-item .product-info {
+    padding: 1rem;
+    background-color: #fff;
+    color: #333;
+}
+
+.product-item .product-info h4 {
+    margin-bottom: 0.5rem;
 }
 
 /* Footer */
-
 .footer {
     background-color: #333;
     color: #fff;
@@ -176,5 +202,3 @@ body {
     text-decoration: none;
     margin: 0 1rem;
 }
-
-
