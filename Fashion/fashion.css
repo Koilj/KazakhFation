@@ -189,6 +189,44 @@ body {
     margin-bottom: 0.5rem;
 }
 
+.product-item .cart-icon {
+    position: absolute;
+    bottom: 10px; /* Позиционирование снизу */
+    right: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.product-item .cart-icon img { /* Используем изображение */
+    width: 20px;
+    height: 20px;
+}
+
+.product-item .cart-icon svg {
+    width: 20px;
+    height: 20px;
+    fill: #333;
+}
+
+.product-item .cart-count {
+    position: absolute;
+    bottom: 10px; /* Позиционирование снизу */
+    right: 40px; /* Сдвиг на 30px вправо */
+    background-color: #333;
+    color: #fff;
+    border-radius: 50%;
+    padding: 5px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+
 /* Footer */
 .footer {
     background-color: #333;

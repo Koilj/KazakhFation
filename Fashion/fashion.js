@@ -6,10 +6,10 @@ function showProducts(category, subcategory) {
     const productsData = {
         men: {
             shapan: [
-                { image: 'men-shapan1.jpg', name: 'Shapan 1', price: '100$' },
-                { image: 'men-shapan2.jpg', name: 'Shapan 2', price: '150$' },
-                { image: 'men-shapan3.jpg', name: 'Shapan 3', price: '120$' },
-                { image: 'men-shapan4.jpg', name: 'Shapan 4', price: '180$' }
+                { image: 'red shapan.jpg', name: 'Shapan 1', price: '100$' },
+                { image: 'men clothes.jpg', name: 'Shapan 2', price: '150$' },
+                { image: 'menshapan3.jpg', name: 'Shapan 3', price: '120$' },
+                { image: 'menshapan4.jpg', name: 'Shapan 4', price: '180$' }
             ],
             vest: [
                 { image: 'men-vest1.jpg', name: 'Vest 1', price: '75$' },
@@ -31,33 +31,33 @@ function showProducts(category, subcategory) {
                 { image: 'womenshapan3.jpeg', name: 'Shapan 3', price: '150$' },
                 { image: 'womenshapan4.jpeg', name: 'Shapan 4', price: '200$' }
             ],
-            vest: [
-                { image: 'women-vest1.jpg', name: 'Vest 1', price: '85$' },
-                { image: 'women-vest2.jpg', name: 'Vest 2', price: '100$' },
-                { image: 'women-vest3.jpg', name: 'Vest 3', price: '95$' },
-                { image: 'women-vest4.jpg', name: 'Vest 4', price: '110$' }
-            ],
             headdress: [
-                { image: 'women-headdress1.jpg', name: 'Headdress 1', price: '60$' },
-                { image: 'women-headdress2.jpg', name: 'Headdress 2', price: '70$' },
-                { image: 'women-headdress3.jpg', name: 'Headdress 3', price: '75$' },
-                { image: 'women-headdress4.jpg', name: 'Headdress 4', price: '80$' }
+                { image: 'womenvest1.jpeg', name: 'Vest 1', price: '85$' },
+                { image: 'womenvest2.jpeg', name: 'Vest 2', price: '100$' },
+                { image: 'womenvest3.jpeg', name: 'Vest 3', price: '95$' },
+                { image: 'womenvest4.jpeg', name: 'Vest 4', price: '110$' }
+            ],
+            vest: [
+                { image: 'womenjil1.png', name: 'Headdress 1', price: '60$' },
+                { image: 'womenjil2.png', name: 'Headdress 2', price: '70$' },
+                { image: 'womenjil3.png', name: 'Headdress 3', price: '75$' },
+                { image: 'womenjil4.png', name: 'Headdress 4', price: '80$' }
             ]
         },
         kids: {
             shapan: [
-                { image: 'kids-shapan1.jpg', name: 'Shapan 1', price: '50$' },
+                { image: 'kidsshapan1.png', name: 'Shapan 1', price: '50$' },
                 { image: 'kids-shapan2.jpg', name: 'Shapan 2', price: '70$' },
                 { image: 'kids-shapan3.jpg', name: 'Shapan 3', price: '60$' },
                 { image: 'kids-shapan4.jpg', name: 'Shapan 4', price: '80$' }
             ],
-            vest: [
-                { image: 'kids-vest1.jpg', name: 'Vest 1', price: '40$' },
-                { image: 'kids-vest2.jpg', name: 'Vest 2', price: '50$' },
+            headdress: [
+                { image: 'kidsvest1.png', name: 'Vest 1', price: '40$' },
+                { image: 'kidsvest2.png', name: 'Vest 2', price: '50$' },
                 { image: 'kids-vest3.jpg', name: 'Vest 3', price: '45$' },
                 { image: 'kids-vest4.jpg', name: 'Vest 4', price: '55$' }
             ],
-            headdress: [
+            vest: [
                 { image: 'kids-headdress1.jpg', name: 'Headdress 1', price: '30$' },
                 { image: 'kids-headdress2.jpg', name: 'Headdress 2', price: '40$' },
                 { image: 'kids-headdress3.jpg', name: 'Headdress 3', price: '35$' },
@@ -92,7 +92,33 @@ function showProducts(category, subcategory) {
         productItem.appendChild(productImage);
         productItem.appendChild(productInfo);
 
+        // Добавляем корзину
+        const cartIcon = document.createElement('div');
+        cartIcon.classList.add('cart-icon');
+
+        // Используем изображение корзины
+        const cartImg = document.createElement('img');
+        cartImg.src = 'carticon.png'; // Замените 'cart-icon.png' на путь к вашему изображению
+        cartImg.alt = 'Add to cart';
+
+        cartIcon.appendChild(cartImg);
+
+        // Добавляем счетчик для корзины
+        const cartCount = document.createElement('div');
+        cartCount.classList.add('cart-count');
+        cartCount.textContent = '0'; // Изначальное значение 0
+
+        productItem.appendChild(cartIcon);
+        productItem.appendChild(cartCount);
+
         productsContainer.appendChild(productItem);
+
+        // Обработка клика по корзине
+        cartIcon.addEventListener('click', () => {
+            let count = parseInt(cartCount.textContent); // Получаем текущее значение
+            count++; // Увеличиваем значение
+            cartCount.textContent = count; // Обновляем текст
+        });
     });
 
     // Анимация появления товаров
@@ -165,4 +191,3 @@ window.addEventListener('scroll', () => {
         lastScrollPosition = currentScrollPosition;
     }
 });
-
