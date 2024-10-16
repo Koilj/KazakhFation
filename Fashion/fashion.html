@@ -9,54 +9,64 @@
   <script src="fashion.js" defer></script>
 </head>
 <body>
-<!-- Navbar -->
 <div class="navbar">
   <div>
-    <h1>QazaqFashion</h1>
+    <h1 class="slide-in-left">QazaqFashion</h1>
   </div>
   <div>
     <a href="../Registration/registration.html" class="registration-btn">Login</a>
   </div>
 </div>
-<!-- Category Section -->
+
 <div class="categories">
-  <h2>Shop by Category</h2>
+  <h2 class="fade-in">Shop by Category</h2>
   <div class="category-grid">
     <div class="category-card" data-category="men">
       <h3>Men</h3>
       <img src="Men%20clothes.jpeg" alt="Men's Clothing" class="category-image">
-      <div class="subcategory-options">
-        <div class="subcategory" data-subcategory="shapan" onclick="showProducts('men', 'shapan')">Shapan</div>
-        <div class="subcategory" data-subcategory="vest" onclick="showProducts('men', 'vest')">Vest</div>
-        <div class="subcategory" data-subcategory="headdress" onclick="showProducts('men', 'headdress')">Headdress</div>
+      <div class="overlay">
+        <div class="subcategory-options">
+          <div class="subcategory" data-subcategory="shapan" onclick="showProducts('men', 'shapan')">Shapan</div>
+          <div class="subcategory" data-subcategory="vest" onclick="showProducts('men', 'vest')">Vest</div>
+          <div class="subcategory" data-subcategory="headdress" onclick="showProducts('men', 'headdress')">Headdress</div>
+        </div>
       </div>
     </div>
     <div class="category-card" data-category="women">
       <h3>Women</h3>
       <img src="women%20clothes.jpeg" alt="Women's Clothing" class="category-image">
-      <div class="subcategory-options">
-        <div class="subcategory" data-subcategory="shapan" onclick="showProducts('women', 'shapan')">Shapan</div>
-        <div class="subcategory" data-subcategory="vest" onclick="showProducts('women', 'vest')">Vest</div>
-        <div class="subcategory" data-subcategory="headdress" onclick="showProducts('women', 'headdress')">Headdress</div>
+      <div class="overlay">
+        <div class="subcategory-options">
+          <div class="subcategory" data-subcategory="shapan" onclick="showProducts('women', 'shapan')">Shapan</div>
+          <div class="subcategory" data-subcategory="vest" onclick="showProducts('women', 'vest')">Vest</div>
+          <div class="subcategory" data-subcategory="headdress" onclick="showProducts('women', 'headdress')">Headdress</div>
+        </div>
       </div>
     </div>
     <div class="category-card" data-category="kids">
       <h3>Kids</h3>
       <img src="kids%20clothes.jpeg" alt="Kids' Clothing" class="category-image">
-      <div class="subcategory-options">
-        <div class="subcategory" data-subcategory="shapan" onclick="showProducts('kids', 'shapan')">Shapan</div>
-        <div class="subcategory" data-subcategory="vest" onclick="showProducts('kids', 'vest')">Vest</div>
-        <div class="subcategory" data-subcategory="headdress" onclick="showProducts('kids', 'headdress')">Headdress</div>
+      <div class="overlay">
+        <div class="subcategory-options">
+          <div class="subcategory" data-subcategory="shapan" onclick="showProducts('kids', 'shapan')">Shapan</div>
+          <div class="subcategory" data-subcategory="vest" onclick="showProducts('kids', 'vest')">Vest</div>
+          <div class="subcategory" data-subcategory="headdress" onclick="showProducts('kids', 'headdress')">Headdress</div>
+        </div>
       </div>
     </div>
   </div>
 </div>
-<!-- Product Display Section -->
+
 <div id="product-display" class="product-display">
-  <h3>Available Products</h3>
+  <h3 class="fade-in">Available Products</h3>
+ <div class="filter-sidebar" id="filterSidebar">
+  <h4>Filter by Price</h4>
+  <input type="range" min="0" max="200" value="200" id="priceRange">
+  <p>Max Price: <span id="maxPriceValue">$200</span></p>
+</div>
   <div id="products"></div>
 </div>
-<!-- Footer -->
+
 <div class="footer">
   <p>© 2024 QazaqFashion</p>
   <a href="#">Privacy Policy</a>

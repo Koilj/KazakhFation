@@ -6,6 +6,33 @@ body {
     color: #333;
 }
 
+/* Анимации */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: slideInLeft 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 /* Navbar */
 .navbar {
     background-color: #333;
@@ -26,6 +53,7 @@ body {
 .categories {
     padding: 4rem 2rem;
     text-align: center;
+    position: relative;
 }
 
 .categories h2 {
@@ -37,8 +65,7 @@ body {
 .category-grid {
     display: flex;
     justify-content: center;
-    gap: 2rem;
-
+    gap: 1rem;
 }
 
 .category-card {
@@ -50,236 +77,181 @@ body {
     max-width: 360px;
     height: 500px;
     cursor: pointer;
-    transition: transform 0.3s ease; /* Добавлено для анимации */
-}
-
-.category-card:hover {
-    transform: translateY(-10px); /* Добавлено для эффекта при наведении */
+    transition: transform 0.3s ease;
+    text-align: center;
+    margin: 0;
 }
 
 .category-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.category-card h3 {
+.category-card:hover .category-image {
+    filter: blur(4px);
+    transform: scale(1.05);
+}
+
+.overlay {
     position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 10px;
+    top: 0;
+    left: 0;
     width: 100%;
-    text-align: center;
-}
-
-/* New Arrivals Carousel */
-.new-arrivals-title {
-    font-size: 2.5rem; /* Размер шрифта */
-    margin: 2rem 0; /* Отступ сверху и снизу */
-    color: #333; /* Цвет текста */
-    text-align: center; /* Центрирование текста */
-}
-
-
-.carousel-container {
-    position: relative;
-    max-width: 100%;
-    overflow: hidden;
-    margin: 0 auto;
-}
-
-/* Carousel */
-.carousel {
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
-    gap: 20px;
-    transition: transform 0.5s ease-in-out;
-    will-change: transform;
-    /* Добавляем анимацию сглаживания */
-    transform-style: preserve-3d;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
 
-/* Carousel Item */
-.carousel-item {
-    min-width: 350px;
-    min-height: 450px;
-    background-color: white;
-    border-radius: 10px;
+.category-card:hover .overlay {
+    opacity: 1;
+}
+
+.subcategory-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     text-align: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
 }
 
-.carousel-item[style*="block"] {
-    display: block;
-}
-
-.carousel-item img {
-    width: 100%;
-    height: 500px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.carousel-item p {
-    margin-top: 10px;
-    font-weight: bold;
-}
-
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.6);
+.subcategory {
+    background-color: #333;
     color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 1;
-    border-radius: 50%;
-    width: 40px; /* Увеличиваем ширину кнопок */
-    height: 40px; /* Увеличиваем высоту кнопок */
-    font-size: 1.5rem; /* Увеличиваем размер шрифта *//
-}
-
-.left-btn {
-    left: 10px;
-}
-
-.right-btn {
-    right: 10px;
-}
-
-.carousel-btn:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-    background-color: #A2846D; /* Изменяем цвет при наведении */
-    transform: scale(1.1); /* Добавляем эффект увеличения */
-}
-
-.carousel-image {
-    width: 100%;
-    height: 500px;
-    object-fit: cover;
+    padding: 0.5rem 1rem;
     border-radius: 8px;
-    transition: transform 0.3s ease; /* Добавляем анимацию сглаживания */
-}
-
-.carousel-image:hover {
-    transform: translateY(-10px);
-}
-
-
-/* Products Section */
-
-.products {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-}
-
-.product-category {
-    margin-top: 20px;
-}
-
-.product img {
-    width: 100%;
-    max-width: 300px;
-    transition: transform 0.3s ease;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-}
-
-.product img:hover {
-    transform: scale(1.2);
-}
-
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 4-5 фото в столбе */
-    gap: 20px;
-}
-
-.product {
-    text-align: center;
-}
-
-select {
-    margin-bottom: 1rem;
-    padding: 10px;
-    font-size: 18px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    outline: none;
-    background-color: #f7f5ef;
-    color: #333;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-select:hover {
-    background-color: #A2846D;
-    color: white;
+.subcategory:hover {
+    background-color: #555;
 }
 
-button {
-    padding: 10px 20px;
-    font-size: 18px;
-    border: none;
+
+/* Product Display Section */
+.product-section {
+    display: flex;
+    padding: 2rem;
+}
+
+.product-display {
+    flex: 1;
+    text-align: center;
+}
+
+.product-item {
+    display: inline-block;
+    margin: 1rem;
     border-radius: 8px;
-    background-color: #333;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    position: relative; /* Для позиционирования .overlay */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
 }
 
-button:hover {
-    background-color:  #333;
+.product-item.show {
+    opacity: 1;
+}
+
+.product-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-item:hover img {
     transform: scale(1.05);
 }
 
-button:active {
-    background-color: #333;
-    transform: scale(0.95);
-}
-
-h2 {
-    color:  #333;
-    font-size: 28px;
-}
-
-h3 {
+.product-item .product-info {
+    padding: 1rem;
+    background-color: #fff;
     color: #333;
-    font-size: 24px;
 }
 
-
-.hidden {
-    display: none;
+.product-item .product-info h4 {
+    margin-bottom: 0.5rem;
 }
 
-/* Скрытие всех категорий по умолчанию */
-.product-category {
-    display: none;
+.product-item .cart-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
-.choose-type-label {
-    font-size: 1.2rem; /* Увеличиваем размер шрифта */
-    font-weight: bold; /* Делаем текст полужирным */
-    margin-bottom: 0.5rem; /* Добавляем отступ снизу */
+.product-item .cart-icon img {
+    width: 20px;
+    height: 20px;
 }
 
-/* Изменения для кнопок */
-button {
-    padding: 15px 30px; /* Увеличиваем отступы */
-    font-size: 1.1rem; /* Увеличиваем размер шрифта */
-    /* ... (остальные стили для кнопок) ... */
+.product-item .cart-count {
+    position: absolute;
+    bottom: 10px;
+    right: 40px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 50%;
+    padding: 5px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Filter Sidebar */
+.filter-sidebar {
+    width: 200px;
+    background-color: #f7f5ef;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+    opacity: 0; /* Изначально прозрачная */
+    transform: translateX(100%); /* Скрыта справа */
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    position: fixed;
+    top: 100px;
+    right: 20px;
+}
+
+.filter-sidebar.show {
+    opacity: 1; /* Видна */
+    transform: translateX(0); /* На своем месте */
+}
+
+.filter-sidebar h4 {
+    margin-top: 0;
+}
+
+#priceRange {
+    width: 100%;
+}
+
+.filter-toggle {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
 }
 
 /* Footer */
-
 .footer {
     background-color: #333;
     color: #fff;

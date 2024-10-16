@@ -7,6 +7,55 @@ body {
     color: #333;
 }
 
+/* Анимации */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: slideInLeft 1s ease-in-out forwards;
+}
+
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(20px);
+    animation: slideInRight 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.image-hover img {
+    transition: transform 0.3s ease;
+}
+
+.image-hover img:hover {
+    transform: scale(1.1);
+}
+
+
 /* Navbar */
 .navbar {
     background-color: #333;
@@ -23,10 +72,6 @@ body {
     margin: 0 1rem;
 }
 
-/* Hero Section */
-.hero h1 {
-    font-size: 3rem;
-}
 
 /* Main content */
 .main-content {
@@ -52,10 +97,10 @@ body {
 
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Используйте адаптивную сетку */
-    gap: 2rem; /* Пробелы между карточками */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
     justify-items: center;
-    padding: 20px; /* Пространство вокруг сетки */
+    padding: 20px;
 }
 
 .product-card {
@@ -64,49 +109,78 @@ body {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     overflow: hidden;
-    width: 100%; /* Полная ширина карточки */
-    max-width: 100%; /* Убираем максимальную ширину */
+    width: 100%;
+    max-width: 100%;
+    position: relative; /* Добавьте эту строку для позиционирования .overlay */
 }
 
 .product-card:hover {
     transform: translateY(-10px);
 }
 
-.product-image img {
-    width: 100%;
-    height: 350px; /* Увеличенная высота изображения */
-    object-fit: cover;
-    border-bottom: 4px solid #333;
+.product-image {
+    position: relative; /* Добавьте эту строку для позиционирования .overlay */
+    overflow: hidden; /* Скрываем содержимое .overlay, выходящее за пределы .product-image */
 }
 
+.product-image img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-bottom: 4px solid #333;
+    transition: transform 0.5s ease; /* Добавляем плавный переход для transform */
+}
+
+.product-image:hover img {
+    transform: scale(1.1); /* Увеличиваем изображение при наведении */
+}
+
+/* Стили для .overlay */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Полупрозрачный черный фон */
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* По умолчанию делаем .overlay невидимым */
+    transition: opacity 0.5s ease; /* Добавляем плавный переход для opacity */
+}
+
+.product-image:hover .overlay {
+    opacity: 1; /* Делаем .overlay видимым при наведении */
+}
+
+.view-more {
+    background-color: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+
 .product-info {
-    padding: 2rem; /* Увеличенные отступы внутри карточки */
+    padding: 2rem;
 }
 
 .product-info h3 {
-    font-size: 1.8rem; /* Размер шрифта для заголовка */
+    font-size: 1.8rem;
     color: #333;
-    margin: 0.5rem 0 0.8rem 0; /* Уменьшены отступы сверху, увеличены снизу */
+    margin: 0.5rem 0 0.8rem 0;
 }
 
 .product-info p {
-    font-size: 1.4rem; /* Размер шрифта для описания */
+    font-size: 1.4rem;
     color: #777;
     margin-bottom: 1.9rem;
-}
-
-.product-btn {
-    background-color: #333;
-    color: #fff;
-    padding: 1rem 2.5rem; /* Увеличенные отступы */
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-.product-btn:hover {
-    background-color: #64412f;
 }
 
 
@@ -120,21 +194,21 @@ body {
     text-align: center;
     border-radius: 10px;
     font-family: Arial, sans-serif;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Добавление теней */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .about-us h2 {
-    font-size: 2.5em; /* Увеличен размер заголовка */
+    font-size: 2.5em;
     margin-bottom: 20px;
     color: #333;
 }
 
 .about-us p {
     font-size: 1.4em;
-    line-height: 1.8; /* Увеличено межстрочное расстояние */
+    line-height: 1.8;
     max-width: 850px;
     margin: 0 auto;
-    color: #444; /* Сделан более темным для лучшей видимости */
+    color: #444;
 }
 
 
@@ -162,17 +236,17 @@ body {
 }
 
 .cultural-text h2 {
-    font-size: 2.8rem; /* Увеличен размер заголовка */
+    font-size: 2.8rem;
     color: #64412f;
     margin-bottom: 1.5rem;
 }
 
 .cultural-text p {
-    font-size: 1.4rem; /* Увеличен размер текста */
-    line-height: 1.8; /* Увеличено межстрочное расстояние для лучшего чтения */
-    color: #333; /* Более темный текст */
+    font-size: 1.4rem;
+    line-height: 1.8;
+    color: #333;
     margin-bottom: 2rem;
-    text-align: justify; /* Выровнен по ширине для более аккуратного вида */
+    text-align: justify;
 }
 
 .cultural-link {
@@ -238,6 +312,13 @@ body {
 .blog-post p {
     font-size: 1rem;
     color: #666;
+}
+
+.blog-post-link {
+    display: block;
+    height: 100%;
+    text-decoration: none;
+    color: inherit; /* Наследуем цвет текста от родителя */
 }
 
 /* Footer */

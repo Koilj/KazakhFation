@@ -4,7 +4,7 @@ body {
     padding: 0;
     background-color: #f7f5ef;
     color: #333;
-    line-height: 1.6; /* Improved readability */
+    line-height: 1.6;
 }
 
 /* Анимации */
@@ -74,24 +74,22 @@ body {
 .header p {
     font-size: 1.2em;
     color: #555;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 /* Sections */
 section {
-    padding: 40px 20px; /* Adjusted padding for better spacing */
+    padding: 40px 20px;
 }
 
 /* Content Wrapper for images and text */
 .content-wrapper {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 30px;
     max-width: 900px;
-    margin: 0 auto; /* Centers the content */
-}
-
-.content-wrapper.reverse {
-    flex-direction: row-reverse; /* Reverses the order of image and text */
+    margin: 0 auto;
 }
 
 .image-container {
@@ -100,14 +98,31 @@ section {
 }
 
 .text-content {
-    flex: 1;
+    flex: 2;
 }
 
 .image-container img {
     width: 100%;
-    height: auto; /* Allows the image to maintain aspect ratio */
+    height: auto;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Question and Answer Styling */
+.question-answer {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.question {
+    flex: 1;
+    min-width: 150px; /* Adjust as needed */
+    margin-right: 20px;
+}
+
+.answer {
+    flex: 2;
 }
 
 h3 {
@@ -116,19 +131,28 @@ h3 {
     color: #333;
 }
 
-p {
-    font-size: 1.2em;
-    color: #555;
+
+
+/* Small Image Row */
+.image-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
 }
 
-ul {
-    list-style: disc;
-    padding-left: 40px;
+.small-image-container {
+    flex: 1;
+    min-width: 80px;
+    overflow: hidden;
 }
 
-li {
-    margin-bottom: 10px;
+.small-image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 
 /* Footer */
 .footer {

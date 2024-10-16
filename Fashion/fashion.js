@@ -2,7 +2,6 @@ function showProducts(category, subcategory) {
     const productsContainer = document.getElementById('products');
     productsContainer.innerHTML = ''; // Очищаем предыдущие товары
 
-    // Замените эти данные на реальные данные о товарах
     const productsData = {
         men: {
             shapan: [
@@ -68,7 +67,6 @@ function showProducts(category, subcategory) {
 
     const selectedProducts = productsData[category][subcategory];
 
-    // Создаем карточки товаров
     selectedProducts.forEach(product => {
         const productItem = document.createElement('div');
         productItem.classList.add('product-item');
@@ -88,106 +86,123 @@ function showProducts(category, subcategory) {
 
         productInfo.appendChild(productName);
         productInfo.appendChild(productPrice);
-
         productItem.appendChild(productImage);
         productItem.appendChild(productInfo);
 
-        // Добавляем корзину
         const cartIcon = document.createElement('div');
         cartIcon.classList.add('cart-icon');
 
-        // Используем изображение корзины
         const cartImg = document.createElement('img');
-        cartImg.src = 'carticon.png'; // Замените 'cart-icon.png' на путь к вашему изображению
+        cartImg.src = 'carticon.png'; // Замените на правильный путь
         cartImg.alt = 'Add to cart';
-
         cartIcon.appendChild(cartImg);
 
-        // Добавляем счетчик для корзины
         const cartCount = document.createElement('div');
         cartCount.classList.add('cart-count');
-        cartCount.textContent = '0'; // Изначальное значение 0
+        cartCount.textContent = '0'; // Начальное значение
 
         productItem.appendChild(cartIcon);
         productItem.appendChild(cartCount);
-
         productsContainer.appendChild(productItem);
 
-        // Обработка клика по корзине
         cartIcon.addEventListener('click', () => {
-            let count = parseInt(cartCount.textContent); // Получаем текущее значение
-            count++; // Увеличиваем значение
-            cartCount.textContent = count; // Обновляем текст
+            let count = parseInt(cartCount.textContent);
+            count++;
+            cartCount.textContent = count;
         });
     });
 
-    // Анимация появления товаров
     const productItems = productsContainer.querySelectorAll('.product-item');
     productItems.forEach((item, index) => {
         setTimeout(() => {
             item.classList.add('show');
-        }, index * 150); // Ускорили задержку
+        }, index * 150);
     });
 
-    // Прокрутка к товарам
     const productDisplay = document.getElementById('product-display');
-    // Ждем, пока все товары появятся перед прокруткой
     setTimeout(() => {
-        productDisplay.scrollIntoView({ behavior: 'smooth' }); // Плавная прокрутка
-    }, 300); // Уменьшили задержку
-    // Включаем обработку прокрутки
+        productDisplay.scrollIntoView({ behavior: 'smooth' });
+    }, 300);
+
     enableScrollAnimation();
+    filterProductsByPrice(priceRange.value);
 }
 
-// Функция для управления анимацией категорий
 function toggleCategoryAnimation(isScrollingDown) {
     const cards = document.querySelectorAll('.category-card');
     const categoryGrid = document.querySelector('.category-grid');
 
     if (isScrollingDown) {
-        // Прокрутка вниз: поднимаем категории
         cards.forEach(card => {
             card.classList.add('category-up');
-            card.classList.remove('category-down'); // Удаляем класс для возвращения вниз
+            card.classList.remove('category-down');
         });
         categoryGrid.classList.add('categories-up');
     } else {
-        // Прокрутка вверх: опускаем категории
         cards.forEach(card => {
-            card.classList.remove('category-up'); // Удаляем класс для подъема
-            card.classList.add('category-down'); // Добавляем класс для возвращения вниз
+            card.classList.remove('category-up');
+            card.classList.add('category-down');
         });
         categoryGrid.classList.remove('categories-up');
     }
 }
 
-// Флаг для отслеживания включения обработчика прокрутки
 let scrollAnimationEnabled = false;
 
-// Включение обработчика прокрутки
 function enableScrollAnimation() {
     scrollAnimationEnabled = true;
 }
 
-// Отключение обработчика прокрутки
 function disableScrollAnimation() {
     scrollAnimationEnabled = false;
 }
 
+function filterProductsByPrice(maxPrice) {
+    const productsContainer = document.getElementById('products');
+    const productItems = productsContainer.querySelectorAll('.product-item');
+
+    productItems.forEach(item => {
+        const productPriceElement = item.querySelector('.product-info p');
+        const productPrice = parseFloat(productPriceElement.textContent.replace('$', ''));
+
+        if (productPrice <= maxPrice) {
+            item.style.display = 'inline-block';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}
+
 let lastScrollPosition = 0;
+
+const priceRange = document.getElementById('priceRange');
+const maxPriceValue = document.getElementById('maxPriceValue');
+const filterSidebar = document.getElementById('filterSidebar');
+
+maxPriceValue.textContent = `$${priceRange.value}`;
+
+priceRange.addEventListener('input', () => {
+    const maxPrice = priceRange.value;
+    maxPriceValue.textContent = `$${maxPrice}`;
+    filterProductsByPrice(maxPrice);
+});
 
 window.addEventListener('scroll', () => {
     if (scrollAnimationEnabled) {
         const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
 
         if (currentScrollPosition > lastScrollPosition) {
-            // Прокрутка вниз
-            toggleCategoryAnimation(true); // Включаем анимацию
+            toggleCategoryAnimation(true);
         } else {
-            // Прокрутка вверх
-            toggleCategoryAnimation(false); // Включаем анимацию
+            toggleCategoryAnimation(false);
         }
 
         lastScrollPosition = currentScrollPosition;
     }
+
+    if (window.pageYOffset > 100) {
+        filterSidebar.classList.add('show');
+    }
 });
+
+
